@@ -21,8 +21,13 @@ def cipher(user_text, n):
             ans += chr((ord(ch) + n - 97) % 26 + 97)
     return ans
 
-user_text = input_func("Enter text to encrypt: ")
-n = int(input_func("Enter the shift pattern (integer): "))
+try:
+    user_text = input_func("Enter text to encrypt: ")
+    n = int(input_func("Enter the shift pattern (integer): "))
+except EOFError:
+    print("Error: Please provide input.")
+    sys.exit(1)
+
 print("Plain Text is: " + user_text)
 print("Shift pattern is: " + str(n))
 print("Cipher Text is: " + cipher(user_text, n))
